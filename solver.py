@@ -135,22 +135,24 @@ def getEntropy(word):
 def getBestGuess():
     entropies = []
     i = 0
-    for word in pastWords:
+    possibilities = getPossibilities()
+    if (len(possibilities) == 1):
+        return possibilities[0]
+    for word in stillAllowed:
         entropies.append(getEntropy(word))
         i += 1
-        print(str(i) + "/" + str(len(pastWords)))
-    return pastWords[entropies.index(max(entropies))]
+        print(str(i) + "/" + str(len(stillAllowed)))
+    return stillAllowed[entropies.index(max(entropies))]
 
 # stillAllowed = pastWords
-updateKnown("stare",["gray","gray","gray","gray","yellow"])
-# updateKnown("knelt",["gray","yellow","gray","gray","gray"])
-# updateKnown("tabus",["gray","gray","gray","gray","gray"])
-# updateKnown("chace",["gray","gray","gray","gray","gray"])
-# updateKnown("donor",["gray","green","yellow","green","yellow"])
-print(getPossibilities())
-# print(getEntropy("other"))
+# updateKnown("crane",["gray","gray","gray","gray","green"])
+# updateKnown("spiel",["yellow","gray","gray","yellow","gray"])
+# updateKnown("depot",["gray","yellow","gray","yellow","gray"])
+# updateKnown("bouse",["gray","green","gray","green","green"])
+# updateKnown("colon",["gray","green","gray","yellow","gray"])
+# print(getPossibilities())
+print(getEntropy("crane"))
 # print(isNot, vIsPossible(["chaos"]))
 # print(getEntropy("cigar"))
 # print(len(getPossibilities()))
-# print(getEntropy("chace"))
-print(getBestGuess())
+# print(getBestGuess())
