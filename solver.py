@@ -136,23 +136,32 @@ def getBestGuess():
     entropies = []
     i = 0
     possibilities = getPossibilities()
+    global stillAllowed
+    # loop through all words and get their entropy
     if (len(possibilities) == 1):
         return possibilities[0]
     for word in stillAllowed:
         entropies.append(getEntropy(word))
         i += 1
+        # print current word and progress since this function takes a while to run
         print(str(i) + "/" + str(len(stillAllowed)))
-    return stillAllowed[entropies.index(max(entropies))]
+    # sort the words by their entropy
+    stillAllowed = stillAllowed[np.flip(np.argsort(entropies,None,kind="quicksort"))]
+    entropies = np.flip(np.sort(entropies,None,kind="quicksort"))
+    # print words in decending order of entropy
+    for i in range(len(entropies)):
+        print(stillAllowed[i] + ": " + str(np.round(entropies[i] * 100)/100) + " bits")
+    # return the word with the highest entropy
+    return stillAllowed[0]
+    # return stillAllowed[entropies.index(max(entropies))]
 
-# stillAllowed = pastWords
-# updateKnown("crane",["gray","gray","gray","gray","green"])
-# updateKnown("spiel",["yellow","gray","gray","yellow","gray"])
-# updateKnown("depot",["gray","yellow","gray","yellow","gray"])
-# updateKnown("bouse",["gray","green","gray","green","green"])
-# updateKnown("colon",["gray","green","gray","yellow","gray"])
-# print(getPossibilities())
-print(getEntropy("crane"))
+stillAllowed = pastWords
+updateKnown("crane",["green","gray","gray","yellow","gray"])
+# updateKnown("yacht",["gray","green","green","gray","yellow"])
+# updateKnown("lacka",["gray","green","green","gray","gray"])
+print(getPossibilities())
+# print(getEntropy("crane"))
 # print(isNot, vIsPossible(["chaos"]))
-# print(getEntropy("cigar"))
+# print(getEntropy("tacos"))
 # print(len(getPossibilities()))
-# print(getBestGuess())
+print(getBestGuess())
