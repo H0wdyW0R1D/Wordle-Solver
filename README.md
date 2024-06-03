@@ -2,8 +2,8 @@
 Solver for NTY's Wordle game using information theory  
   
 Using this solver the following was concluded:  
-[Word Information](https://github.com/H0wdyW0R1D/Wordle-Solver/edit/main/README.md?plain=1#L8)  
-[Letter Frequency](https://github.com/H0wdyW0R1D/Wordle-Solver/edit/main/README.md?plain=1#L689)  
+[Word Information](https://github.com/H0wdyW0R1D/Wordle-Solver/main/README.md?plain=1#L8)  
+[Letter Frequency](https://github.com/H0wdyW0R1D/Wordle-Solver/main/README.md?plain=1#L689)  
   
 ## Amount of information gained from words  
 This was taken from a subset of over 600 previous Wordle solutions and some common openers.  
