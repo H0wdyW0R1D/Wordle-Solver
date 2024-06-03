@@ -10,7 +10,6 @@ Take these words, as well as any words found online, with a grain of salt as ree
 alter: 5.31 bits  
 crate: 5.22 bits  
 slate: 5.22 bits  
-slate: 5.22 bits  
 trace: 5.18 bits  
 arise: 5.16 bits  
 cater: 5.15 bits  
