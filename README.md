@@ -1,5 +1,8 @@
 # Wordle-Solver  
 Solver for NTY's Wordle game using information theory  
+
+Wordlist: <https://gist.github.com/dracos/dd0668f281e685bad51479e5acaadb93>  
+Past Solutions List (goes up to March, 23, 2023): <https://eagerterrier.github.io/previous-wordle-words/chronological.txt>
   
 Using this solver the following was concluded:  
   
