@@ -128,40 +128,57 @@ def getEntropy(word):
         globals()["notNot"] = copy.deepcopy(cNotNot)
         globals()["contains"] = copy.deepcopy(cContains)
         globals()["stillAllowed"] = copy.deepcopy(cStillAllowed)
-        # print(possibilities[i], str(i + 1) + "/" + str(numPossibilities), entropy)
+        # print(possibilities[i], str(i + 1) + "/" + str(numPossibilities), entropy/i)
     entropy /= numPossibilities
     return entropy
 
-def getBestGuess():
+def getBestGuess(list):
     entropies = []
     i = 0
     possibilities = getPossibilities()
-    global stillAllowed
     # loop through all words and get their entropy
     if (len(possibilities) == 1):
         return possibilities[0]
-    for word in stillAllowed:
+    for word in list:
         entropies.append(getEntropy(word))
         i += 1
         # print current word and progress since this function takes a while to run
-        print(str(i) + "/" + str(len(stillAllowed)))
+        # print(str(i) + "/" + str(len(list)))
     # sort the words by their entropy
-    stillAllowed = stillAllowed[np.flip(np.argsort(entropies,None,kind="quicksort"))]
+    nList = np.array(list)[np.flip(np.argsort(entropies,None,kind="quicksort"))]
     entropies = np.flip(np.sort(entropies,None,kind="quicksort"))
     # print words in decending order of entropy
-    for i in range(len(entropies)):
-        print(stillAllowed[i] + ": " + str(np.round(entropies[i] * 100)/100) + " bits")
+    # for i in range(len(entropies)):
+        # print(nList[i] + ": " + str(np.round(entropies[i] * 100)/100) + " bits")
     # return the word with the highest entropy
-    return stillAllowed[0]
+    return nList[0]
     # return stillAllowed[entropies.index(max(entropies))]
 
-stillAllowed = pastWords
-updateKnown("crane",["green","gray","gray","yellow","gray"])
-# updateKnown("yacht",["gray","green","green","gray","yellow"])
-# updateKnown("lacka",["gray","green","green","gray","gray"])
+def getFreqOfCharacters(list):
+    a = np.zeros(26)
+    b = np.arange(26)
+    for word in list:
+        for letter in word:
+            a[ord(letter)-97] += 1
+
+    c = np.array(b)[np.flip(np.argsort(a,None,kind="quicksort"))]
+    d = np.flip(np.sort(a,None,kind="quicksort"))
+    print(c,d)
+    for i in range(26):
+        print(chr(c[i]+97) + ": " + str(d[i]))
+
+# stillAllowed = pastWords
+
+# functions:
+# getFreqOfCharacters(list)
+# getPossibilities()
+# isPossible(word)
+# updateKnown(guess,info)
+# getEntropy(word)
+# getBestGuess()
+
+# example:
+updateKnown("crane",["green","yellow","gray","gray","gray"])
 print(getPossibilities())
-# print(getEntropy("crane"))
-# print(isNot, vIsPossible(["chaos"]))
-# print(getEntropy("tacos"))
-# print(len(getPossibilities()))
-print(getBestGuess())
+print("Entropy of 'happy': " + str(getEntropy("happy")))
+print("Best guess: " + getBestGuess(pastWords))

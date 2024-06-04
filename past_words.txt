@@ -671,3 +671,7 @@ Glove
 Tough
 Duvet
 Staid
+Crane
+Slate
+Adieu
+Audio
