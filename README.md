@@ -9,10 +9,12 @@ Using this solver the following was concluded:
 ## Amount of information gained from words  
 This was taken from a subset of over 600 previous Wordle solutions and some common openers.  
 Take these words, as well as any words found online, with a grain of salt as reevaluating the same words with a different wordset will yeild different values.
-  
+
+roate: 5.54 bits  
 alter: 5.31 bits  
 crate: 5.22 bits  
 slate: 5.22 bits  
+tarse: 5.21 bits  
 trace: 5.18 bits  
 arise: 5.16 bits  
 cater: 5.15 bits  
@@ -36,6 +38,7 @@ loser: 4.84 bits
 trope: 4.84 bits  
 shire: 4.82 bits  
 horse: 4.81 bits  
+dealt: 4.81 bits
 pleat: 4.8 bits  
 snarl: 4.77 bits  
 snarl: 4.77 bits  
