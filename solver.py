@@ -6,15 +6,14 @@ words = words.readlines()
 words = [sub[: -1] for sub in words]
 stillAllowed = words.copy()
 
-pastWords = open("past_words.txt","r")
-pastWords = pastWords.readlines()
-pastWords = [sub[: -1] for sub in pastWords]
-for i in range(len(pastWords)):
-    pastWords[i] = pastWords[i].lower()
-# print(pastWords)
+smallList = open("small_list.txt","r")
+smallList = smallList.readlines()
+smallList = [sub[: -1] for sub in smallList]
+for i in range(len(smallList)):
+    smallList[i] = smallList[i].lower()
+# print(smallList)
 # print(words)
 
-global isNot, notNot, contains
 isNot = [[],[],[],[],[]]
 notNot = ["","","","",""]
 contains = []
@@ -97,7 +96,7 @@ def getCombination(word,solution):
         l = word[i]
         doesContains = False
         for j in range(5):
-            if (solution[j] == l and combo[j] == ""):
+            if (solution[j] == l and combo[i] == ""):
                 doesContains = True
         if (doesContains):
             combo[i] = "yellow"
@@ -143,13 +142,13 @@ def getBestGuess(list):
         entropies.append(getEntropy(word))
         i += 1
         # print current word and progress since this function takes a while to run
-        # print(str(i) + "/" + str(len(list)))
+        print(str(i) + "/" + str(len(list)))
     # sort the words by their entropy
     nList = np.array(list)[np.flip(np.argsort(entropies,None,kind="quicksort"))]
     entropies = np.flip(np.sort(entropies,None,kind="quicksort"))
     # print words in decending order of entropy
-    # for i in range(len(entropies)):
-        # print(nList[i] + ": " + str(np.round(entropies[i] * 100)/100) + " bits")
+    for i in range(len(entropies)):
+        print(nList[i] + ": " + str(np.round(entropies[i] * 100)/100) + " bits")
     # return the word with the highest entropy
     return nList[0]
     # return stillAllowed[entropies.index(max(entropies))]
@@ -167,7 +166,7 @@ def getFreqOfCharacters(list):
     for i in range(26):
         print(chr(c[i]+97) + ": " + str(d[i]))
 
-# stillAllowed = pastWords
+stillAllowed = smallList
 
 # functions:
 # getFreqOfCharacters(list)
@@ -177,8 +176,10 @@ def getFreqOfCharacters(list):
 # getEntropy(word)
 # getBestGuess()
 
-# example:
-updateKnown("crane",["green","yellow","gray","gray","gray"])
-print(getPossibilities())
-print("Entropy of 'happy': " + str(getEntropy("happy")))
-print("Best guess: " + getBestGuess(pastWords))
+# updateKnown("roate",[""])
+# print(getPossibilities())
+# print(len(getPossibilities()))
+# print(notNot,isNot,contains)
+# print("Entropy of 'greet': " + str(getEntropy("greet")))
+# print(len(smallList))
+print("Best guess: " + getBestGuess(smallList))
